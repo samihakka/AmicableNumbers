@@ -1,0 +1,165 @@
+<html>
+
+    <body>
+
+        <div><br>
+            First number: <input type="number" id="firstNum"/><br><br>
+            Second number: <input type="number" id="secondNum"/><br><br>
+            <div>
+            <input type="submit" value="Are these ammicable?" id="button" onclick="displayAmmicable()"/><br>
+            
+            </div>
+            <div>
+                <input type="submit" value="Display the factors." id="button" onclick="processNums()"/><br>
+             </div>
+
+
+            
+            
+        </div>
+
+        
+            
+
+
+        <script>
+            function displayAmmicable() {
+                var firstNumber= document.getElementById("firstNum").value;
+                var secondNumber= document.getElementById("secondNum").value;
+
+
+                var firstFactorSum = helper(firstNumber);
+                var secondFactorSum = helper(secondNumber);
+
+                if ((firstFactorSum == secondNumber) && (secondFactorSum == firstNumber && firstNumber != 0)) {
+                    document.writeln("The numbers: " + firstNumber + " and " + secondNumber + " are ammicable");
+                }
+                else {
+                    document.writeln("The numbers: " + firstNumber + " and " + secondNumber + " are not ammicable");
+                    document.writeln("<br><br>Refresh the page to insert another pair of numbers");
+                }
+                
+            }
+            function processNums() 
+            {
+                var firstNumber= document.getElementById("firstNum").value;
+                var secondNumber= document.getElementById("secondNum").value;
+
+
+                var firstFactorSum = helper(firstNumber);
+                var secondFactorSum = helper(secondNumber);
+
+                var firstArraySize = helper2(firstNumber);
+                var secondArraySize = helper2(secondNumber);
+
+                
+                var firstArray = fillArray(firstArraySize, firstNumber);
+                var secondArray = fillArray(secondArraySize, secondNumber);
+
+                document.writeln("First number's factors: [");
+
+                for (var i = 0; i < firstArraySize; i += 1) {
+                    document.writeln(firstArray[i]);
+                }
+                document.writeln("]");
+
+
+                document.writeln("<br>Second number's factors: [");
+
+                for (var i = 0; i < secondArraySize; i += 1) {
+                    document.writeln(secondArray[i]);
+                }
+                document.writeln("]<br><br>");
+                document.writeln("Refresh the page to insert another pair of numbers");
+
+                
+
+            }
+            function helper(x) {
+
+                var divider;
+                var y = 1;
+                var counter = 0;
+
+                
+                while (y < x) {
+                    
+                    divider = x;
+                    if ((divider % y) == 0) {
+                        counter += y;
+
+                    }
+                    y += 1;
+    
+                }
+                return counter;
+            }
+            function helper(x) {
+
+                var divider;
+                var y = 1;
+                var counter = 0;
+
+                
+                while (y < x) {
+                    
+                    divider = x;
+                    if ((divider % y) == 0) {
+                        counter += y;
+
+                    }
+                    y += 1;
+    
+                }
+                return counter;
+            }
+
+            function helper2(x) {
+
+                var divider;
+                var y = 1;
+                var counter = 0;
+
+
+                while (y < x) {
+    
+                    divider = x;
+                    if ((divider % y) == 0) {
+                        counter += 1;
+
+                    }
+                    y += 1;
+
+                }
+               return counter;
+            }
+
+        function fillArray(x, num) {
+            var factors = new Array(x);
+            
+            var i = 0;
+            var y = 1;
+            var divider;
+
+            while (y < num) {
+
+                divider = num;
+
+                if ((divider % y) == 0) {
+                    factors[i] = y;
+                    i += 1;
+                }
+                y += 1;
+
+            }
+
+            return factors;
+        }
+        </script>
+        
+        
+    
+    </body>
+
+
+</html>
